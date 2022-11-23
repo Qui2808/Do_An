@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Do_An.Models.KhuVuc>
+
+@{
+    Layout = null;
+}
+
+<style>
+    .catory {
+        position: absolute;
+        top: 64px;
+        border-right: 1px solid;
+    }
+    .div-cate {
+
+        list-style-type: none;
+    }
+
+    .div-cate a {
+        font-size: 20px;
+        padding: 4px 16px;
+        color: #4AD295;
+        display: block;
+    }
+
+
+</style>
+
+<div class="catory">
+    @foreach (var item in Model)
+    {
+        <li class="div-cate">
+            @Html.ActionLink(item.TenKV, "ProductList", "Categories", new { @Id = item.Id }, null)
+        </li>
+    }
+</div>

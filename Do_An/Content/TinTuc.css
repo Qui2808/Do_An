@@ -1,0 +1,53 @@
+﻿body {
+}
+
+#div-pro-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.box-pro {
+    height: 380px;
+    width: 250px;
+    background-color: #EEEEE0;
+    border: 0px solid #000;
+    box-shadow: 10px 10px #808080;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#div-pro-list .margin-des a:hover {
+    color: #548B54;
+    cursor: pointer;
+}
+
+#div-pro-list .margin-des a {
+    text-decoration: none;
+    color: #000;
+}
+
+#div-pro-list b{
+    font-size: 20px;
+}
+
+.size-img {
+    height: 160px;
+    width: 100%;
+}
+
+.box-description {
+    height: 200px;
+    width: 98%;
+    margin-top: 0px;
+}
+
+.margin-des {
+    margin-left: 10px;
+    padding-top: 5px;
+}
+
+.box-pro {
+    margin: auto;
+    margin-top: 8px;
+}

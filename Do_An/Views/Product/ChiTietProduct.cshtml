@@ -1,0 +1,51 @@
+﻿@model Do_An.Models.Infor
+
+@{
+    ViewBag.Title = "ChiTiet";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link href="~/Content/Chitiet.css" rel="stylesheet" />
+
+<table class="container">
+    <tr>
+        <td class="chitiet-img col-lg-6">
+            <img src="~/Images/DiaDiem/@Model.ImageTravel" alt="Alternate Text" class="image"/>
+
+        </td>
+
+        <td class="chitiet-infor">
+            <h1 style="font-weight: 600">Du Lịch @Model.Name @Model.ThoiGian</h1>
+            <div class="is-divider small"></div>
+            <span>@Model.Gia VNĐ</span>
+            <br />
+            <div class="book btn btn-danger">Đặt Ngay</div>
+            <br />
+            <p style="font-size: 20px;">@Model.MoTa</p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <div class="mota" style="margin-top: 32px; font-size: 20px;">
+                <h2>Lịch trình</h2>
+                <h4>TP.HCM – PHÚ QUỐC (ăn trưa, chiều)</h4>
+                <p>
+                    Sáng: Quý khách có mặt tại ga quốc nội, sân bay Tân Sơn Nhất trước giờ bay ít nhất ba tiếng. <br />
+                    Đại diện công ty Du Lịch Việt đón và hỗ trợ Quý khách làm thủ tục đón chuyến bay đi Phú Quốc. <br />
+                    Đến sân bay Phú Quốc, Hướng Dẫn Viên đón đoàn tham quan thắng cảnh Dinh Cậu (Ngôi Miếu Long Vương) ví như biểu tượng của Phú Quốc nơi biển, cát, nắng và đá hoà trộn với nhau thành một khung cảnh hữu tình. Nơi đây không chỉ là một cảnh vật đẹp, có hình thù kỳ thú mà còn là nơi đất thánh linh thiêng, cổ kính. <br />
+                    Tham quan làng chài Hàm Ninh, Quý khách có thể thưởng thức đặc sản Hàm Ninh hoặc mua về làm quà cho người thân: ghẹ, hải mã sống ngâm rượu, hải mã chiên giòn, quả dứa biển và trái mỏ quạ để ngâm rượu thuốc…. đây là những đặc sản chỉ có ở Phú Quốc (chi phí tự túc).
+                </p>
+                <p>
+                    Trưa: Dùng cơm trưa. <br />
+                    Thăm những thắng cảnh và sản vật đặc sắc tại Phú Quốc như: vườn tiêu, cơ sở sản xuất rượu vang sim, nhà thùng sản xuất nước mắm cá cơm. <br />
+                    Quý khách nhận phòng nghỉ ngơi.
+                </p>
+                <p>
+                    Tối: Dùng bữa tối. Nghỉ đêm tại Phú Quốc.
+                </p>
+            </div>
+        </td>
+        <td></td>
+    </tr>
+</table>
+
+

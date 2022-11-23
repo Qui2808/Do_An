@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TravelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="IdCus" />
+          </Key>
+          <Property Name="IdCus" Type="int" Nullable="false" />
+          <Property Name="Ho" Type="nvarchar" MaxLength="30" />
+          <Property Name="Ten" Type="nvarchar" MaxLength="20" />
+          <Property Name="Sdt" Type="nvarchar" MaxLength="11" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="MatKhau" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Infor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="MoTa" Type="nvarchar(max)" />
+          <Property Name="XuatPhat" Type="nvarchar" MaxLength="100" />
+          <Property Name="NgayKH" Type="date" />
+          <Property Name="ThoiGian" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdKhuVuc" Type="int" />
+          <Property Name="ImageTravel" Type="nchar" MaxLength="50" />
+          <Property Name="Gia" Type="nchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="KhuVuc">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TenKV" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_IdKhuVuc">
+          <End Role="KhuVuc" Type="Self.KhuVuc" Multiplicity="0..1" />
+          <End Role="Infor" Type="Self.Infor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhuVuc">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Infor">
+              <PropertyRef Name="IdKhuVuc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TravelModelStoreContainer">
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Infor" EntityType="Self.Infor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhuVuc" EntityType="Self.KhuVuc" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_IdKhuVuc" Association="Self.FK_IdKhuVuc">
+            <End Role="KhuVuc" EntitySet="KhuVuc" />
+            <End Role="Infor" EntitySet="Infor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TravelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Infor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="XuatPhat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKH" Type="DateTime" Precision="0" />
+          <Property Name="ThoiGian" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdKhuVuc" Type="Int32" />
+          <NavigationProperty Name="KhuVuc" Relationship="Self.FK_IdKhuVuc" FromRole="Infor" ToRole="KhuVuc" />
+          <Property Name="ImageTravel" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Gia" Type="String" Unicode="true" FixedLength="true" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="KhuVuc">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TenKV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Infors" Relationship="Self.FK_IdKhuVuc" FromRole="KhuVuc" ToRole="Infor" />
+        </EntityType>
+        <Association Name="FK_IdKhuVuc">
+          <End Role="KhuVuc" Type="Self.KhuVuc" Multiplicity="0..1" />
+          <End Role="Infor" Type="Self.Infor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhuVuc">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Infor">
+              <PropertyRef Name="IdKhuVuc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TravelEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Infors" EntityType="Self.Infor" />
+          <EntitySet Name="KhuVucs" EntityType="Self.KhuVuc" />
+          <AssociationSet Name="FK_IdKhuVuc" Association="Self.FK_IdKhuVuc">
+            <End Role="KhuVuc" EntitySet="KhuVucs" />
+            <End Role="Infor" EntitySet="Infors" />
+          </AssociationSet>
+          <EntitySet Name="Customers" EntityType="TravelModel.Customer" />
+        </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="IdCus" />
+          </Key>
+          <Property Name="IdCus" Type="Int32" Nullable="false" />
+          <Property Name="Ho" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Ten" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sdt" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TravelModelStoreContainer" CdmEntityContainer="TravelEntities1">
+          <EntitySetMapping Name="Infors">
+            <EntityTypeMapping TypeName="TravelModel.Infor">
+              <MappingFragment StoreEntitySet="Infor">
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+                <ScalarProperty Name="ImageTravel" ColumnName="ImageTravel" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="XuatPhat" ColumnName="XuatPhat" />
+                <ScalarProperty Name="NgayKH" ColumnName="NgayKH" />
+                <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+                <ScalarProperty Name="IdKhuVuc" ColumnName="IdKhuVuc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhuVucs">
+            <EntityTypeMapping TypeName="TravelModel.KhuVuc">
+              <MappingFragment StoreEntitySet="KhuVuc">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TenKV" ColumnName="TenKV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="TravelModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
+                <ScalarProperty Name="Ho" ColumnName="Ho" />
+                <ScalarProperty Name="IdCus" ColumnName="IdCus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

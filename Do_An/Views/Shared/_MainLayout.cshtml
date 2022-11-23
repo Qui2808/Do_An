@@ -1,0 +1,182 @@
+﻿
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Content/Main.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link href="~/Content/aos.css" rel="stylesheet">
+    <link href="~/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- ======= Header ======= -->
+    @*<header id="header" class="d-flex align-items-center">
+            <div class="container d-flex align-items-center justify-content-between">
+
+                <h1 class="logo"><a href="index.html">PQ2L<span>.</span></a></h1>
+                 Uncomment below if you prefer to use an image logo
+                 <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>
+
+                <nav id="navbar" class="navbar">
+                    <ul>
+                        <li><a class="nav-link scrollto active" href="@Url.Action("Content", "Home")">Trang Chủ</a></li>
+                        <li><a class="nav-link scrollto" href="@Url.Action("GioiThieu", "Home")">Giới Thiệu</a></li>
+                        <li class="dropdown">
+                            <a href="@Url.Action("Index", "Product")"><span>Tour</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                @{ Html.RenderAction("CategoryPartial", "Categories");}
+
+                            </ul>
+                        </li>
+                        <li><a class="nav-link scrollto" href="@Url.Action("TinTuc", "Home")">Tin tức</a></li>
+                    </ul>
+                    <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav> .navbar
+
+            </div>
+        </header> End Header*@
+
+
+    <header>
+
+        <div id="menu-bar" class="fas fa-bars"></div>
+
+        <a href="@Url.Action("Content", "Home")" class="logo"><span>T</span>ravel</a>
+
+        <nav class="navbar">
+            <a href="@Url.Action("Content", "Home")">Trang chủ</a>
+            <a href="@Url.Action("GioiThieu", "Home")">Giới thiệu</a>
+            <a href="@Url.Action("Index", "Product")">Tour</a>
+            <a href="@Url.Action("TinTuc", "Home")">Tin tức</a>
+        </nav>
+
+        <div class="icons">
+            <i class="fas fa-search" id="search-btn"></i>
+            <i class="fas fa-user" id="login-btn" style="color: #333; cursor: default; margin-right: 6px;"></i>
+            @if (Session["TaiKhoan"] != null)
+            {
+                <a href="#" style="font-size: 16px">Trang admin</a>
+                <a href="~/User/Logout" style="font-size: 16px; padding-left: 8px;">Đăng xuất</a>
+            }
+            else
+            {
+                <a href="~/User/Login" style="font-size: 16px">Đăng nhập</a>
+                <a href="~/User/Register" style="font-size: 16px; padding-left: 8px;">Đăng ký</a>
+            }
+        </div>
+      
+        <div action="" class="search-bar-container">
+            @using (Html.BeginForm("KetQuaTimKiem", "Search", FormMethod.Post, new { @class = "search-form" }))
+            {
+                <input type="search" id="search-bar" placeholder="Bạn muốn đến đâu?" name="txtTimKiem">
+                <input type="submit" for="search-bar" class = "search" value="Tìm kiếm" >
+            }
+
+        </div>
+
+
+    </header>
+    <span style="padding-bottom: 80px; display: block;"></span>
+
+    <!-- header section ends -->
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h3>PQ2L<span>.</span></h3>
+                        <p>
+                            828 Sư Vạn Hạnh <br>
+                            P12, Q10 <br>
+                            TP HCM <br><br>
+                            <strong>Phone:</strong> +1 5589 55488 55<br>
+                            <strong>Email:</strong> info@example.com<br>
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Tin tức</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("TinTuc", "Home")">Bản tin du lịch</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("TinTuc", "Home")">Khám phá du lịch</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("TinTuc", "Home")">Kinh nghiệm du lịch</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("TinTuc", "Home")">Sự kiện du lịch</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Menu</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("Content", "Home")">Trang chủ</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("GioiThieu", "Home")">Giới thiệu</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("Index", "Product")">Tour</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("TinTuc", "Home")">Tin tức</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Our Social Networks</h4>
+                        <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+                        <div class="social-links mt-3">
+                            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container py-4">
+            <div class="copyright">
+                &copy; Copyright <strong><span>PQ2L</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="https://kit.fontawesome.com/88d926a289.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="~/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="~/Scripts/aos.js"></script>
+    <script src="~/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="~/vendor/php-email-form/validate.js"></script>
+    <script src="~/Scripts/JavaScript.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+</body>
+</html>

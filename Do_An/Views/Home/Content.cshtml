@@ -1,0 +1,185 @@
+﻿@model IEnumerable<Do_An.Models.Infor>
+@{
+    ViewBag.Title = "Content";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link href="~/Content/MyStyle.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+
+
+<!--Banner-->
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="3000">
+            <img src="~/Images/du_lich2.jpg" class="banner-img d-block w-100" alt="..." style="height: 600px">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>PQ2L - Đi và trải nghiệm mọi thứ</h5>
+                <p>Đồng hành cùng bạn mọi nẻo đường</p>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+            <img src="~/Images/du_lich4.jpg" class="banner-img d-block w-100" alt="..." style="height: 600px">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>PQ2L - Đi và trải nghiệm mọi thứ</h5>
+                <p>Đồng hành cùng bạn mọi nẻo đường</p>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+            <img src="~/Images/du_lich3.jpg" class="banner-img d-block w-100" alt="..." style="height: 600px">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>PQ2L - Đi và trải nghiệm mọi thứ</h5>
+                <p>Đồng hành cùng bạn mọi nẻo đường</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<!--End Banner-->
+
+
+<div class="diaDiem">
+    <div class="container">
+        <p data-aos="fade-up">Chiêm ngưỡng kiệt tác thiên nhiên</p>
+        <h2 data-aos="fade-up">ĐIỂM ĐẾN KHÔNG THỂ BỎ QUA</h2>
+        <img class="gach" src="~/Images/gach-xanh.png" alt="Alternate Text" style="width: 180px;" data-aos="fade-up" />
+
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="diaDiem-item col-lg-4 col-sm-6">
+                            <img src="~/Images/DiaDiem/ConDao5.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="diaDiem-item col-lg-4 col-sm-6">
+                            <img src="~/Images/DiaDiem/DaNang5.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="diaDiem-item col-lg-4 col-sm-12">
+                            <img src="~/Images/DiaDiem/PhuQuoc5.jpg" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="diaDiem-item col-lg-4 col-sm-6">
+                            <img src="~/Images/DiaDiem/PhuYen5.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="diaDiem-item col-lg-4 col-sm-6">
+                            <img src="~/Images/DiaDiem/HaNoi5.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="diaDiem-item col-lg-4 col-sm-12">
+                            <img src="~/Images/DiaDiem/Sapa5.jpg" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<div class="tour-special" id="tour-special">
+    <p data-aos="fade-up">Chọn ngay cho bạn tour phù hợp</p>
+    <h2 data-aos="fade-up">TOUR NỔI BẬT</h2>
+    <img class="gach" src="~/Images/gach2.png" alt="Alternate Text" style="width: 180px;" data-aos="fade-up" />
+
+
+    <div class="content-box">
+        <div class="hieu_ung">
+            @foreach (var tour in Model)
+            {
+                <div class="noi_dung">
+                    <div class="hinh_anh">
+                        <img src="~/Images/DiaDiem/@tour.ImageTravel">
+                    </div>
+                    <div class="van_ban">
+                        <h3>@tour.Name</h3>
+                        <p>
+                            Giá:  <span style="color: blue; font-weight: 600;">@tour.Gia</span> VNĐ
+                        </p>
+                        <a href="/Product/chitietproduct/@tour.Id" class="btn btn-primary">Chi tiết</a>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+</div>
+
+<div class="lyDo container">
+    <h2 data-aos="fade-up">LÝ DO CHỌN PQ2L</h2>
+    <img class="gach" src="~/Images/gach-xanh.png" alt="Alternate Text" style="width: 180px;" data-aos="fade-up" />
+
+    <div class="lyDo-box">
+        <div class="card w-25" data-aos="fade-right">
+            <img src="~/Images/lyDo-price.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Giá luôn tốt nhất</h5>
+                <p class="card-text">Để mọi người mọi nhà đều có thể đi du lịch với giá cả hợp lý nhất.</p>
+            </div>
+        </div>
+        <div class="card w-25" data-aos="fade-up">
+            <img src="~/Images/lydo-dich_vu.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Hỗ trợ 24/7</h5>
+                <p class="card-text">Để mọi người mọi nhà đều có thể đi du lịch với giá cả hợp lý nhất.</p>
+            </div>
+        </div>
+        <div class="card w-25" data-aos="fade-left">
+            <img src="~/Images/lydo-trai_nghien.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Trải nghiệm tốt nhất</h5>
+                <p class="card-text">Để mọi người mọi nhà đều có thể đi du lịch với giá cả hợp lý nhất.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="UuDai">
+    <h2 data-aos="fade-up">Ưu đãi cho 50 khách hàng đầu tiên <br /> đặt tour miền bắc <span>Giảm ngay 40%</span></h2>
+    <img class="gach" src="~/Images/gach2.png" alt="Alternate Text" style="width: 180px;" data-aos="fade-up" />
+
+    <div id="clockdiv">
+        <div>
+            <span class="days"></span>
+            <div class="smalltext">Days</div>
+        </div>
+        <div>
+            <span class="hours"></span>
+            <div class="smalltext">Hours</div>
+        </div>
+        <div>
+            <span class="minutes"></span>
+            <div class="smalltext">Minutes</div>
+        </div>
+        <div>
+            <span class="seconds"></span>
+            <div class="smalltext">Seconds</div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/JavaScript.js"></script>

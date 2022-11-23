@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Do_An.Models.Infor>
+
+@{
+    ViewBag.Title = "KetQuaTimKiem";
+    Layout = "~/Views/Shared/_LayoutProduct.cshtml";
+}
+
+<link href="~/Content/sanpham.css" rel="stylesheet" />
+
+<div class="content-main">
+    <h2 style="color: red;">@ViewBag.ThongBao</h2>
+    @foreach (var sp in Model)
+    {
+        <div class="card">
+            <img src="~/Images/DiaDiem/@sp.ImageTravel" class="card-img-top" alt="..." height="240px">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> @sp.Name</h5>
+                <p class="card-text">@sp.Gia VNĐ</p>
+                <a href="/Product/chitietproduct/@sp.Id" class="btn btn-primary">Đặt Ngay</a>
+            </div>
+        </div>
+    }
+</div>

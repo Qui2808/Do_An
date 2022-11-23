@@ -1,0 +1,35 @@
+﻿html {
+    font-size: 62.5%;
+}
+:root {
+    --green: #4AD295;
+}
+
+.chitiet-img .image {
+    width: 80%;
+    max-height: 450px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.is-divider {
+    height: 3px;
+    display: block;
+    background-color: rgba(0,0,0,0.1);
+    margin: 1em 0 1em;
+    width: 100%;
+    max-width: 30px;
+}
+
+.chitiet-infor span {
+    font-size: 24px;
+    color: blue;
+    margin-left: 16px;
+}
+
+.chitiet-infor .btn {
+    margin: 18px 0;
+}
+
